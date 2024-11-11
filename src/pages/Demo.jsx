@@ -18,14 +18,14 @@ const Demo = () => {
         <section className="mb-8">
           <h2 className="text-3xl font-semibold text-purple-300 mb-4">Device Demonstration Video</h2>
           <div className="aspect-w-16 aspect-h-9 mb-4 h-[450px] w-full">
-            {/* <iframe
-              src="https://www.youtube.com/watch?v=wDchsz8nmbo" // Replace FILE_ID with your actual Google Drive file ID
+            <iframe
+              src="https://www.youtube.com/embed/f1kEoUw9lHg"
               title="Waste Segregation Device Demo"
               frameBorder="0"
-              allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               className="w-full h-full rounded-lg shadow-lg"
-            ></iframe> */}
+            ></iframe>
           </div>
           <p className="text-base md:text-lg text-gray-300 leading-relaxed">
             This video provides a real-time demonstration of our waste segregation device. You’ll see how the device can accurately

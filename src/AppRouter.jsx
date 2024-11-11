@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import TotalWaste from "./pages/TotalWaste";
 import RealTimeData from "./pages/RealTime";
-import Demo from "./pages/demo";
+import Demo from "./pages/Demo";
 
 const AppRouter = () => {
   return (
