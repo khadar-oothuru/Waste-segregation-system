@@ -19,7 +19,7 @@ const Demo = () => {
           <h2 className="text-3xl font-semibold text-purple-300 mb-4">Device Demonstration Video</h2>
           <div className="aspect-w-16 aspect-h-9 mb-4 h-[450px] w-full">
             <iframe
-              src="https://www.youtube.com/embed/your-demo-video-id"
+              src="https://www.youtube.com/embed/f1kEoUw9lHg"
               title="Waste Segregation Device Demo"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
