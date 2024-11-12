@@ -16,26 +16,39 @@ export const WasteProvider = ({ children }) => {
   useEffect(() => {
     fetchWasteData((data) => {
       if (data) {
-        // Map data to include timestamp and other necessary fields
-        const records = data.map((item) => ({
-          dryWaste: item.dryWaste || 0,
-          wetWaste: item.wetWaste || 0,
-          humidity: item.humidity || 0,
-          distance: item.distance || 0,
-          timestamp: item.timestamp || null,  // Include timestamp if available
-        }));
+        // Process each data entry according to wasteType and include formatted timestamp
+        const records = data.map((item) => {
+          // Format timestamp to "MMM dd, hh:mm AM/PM" format
+          const formattedTime = item.timestamp
+            ? new Date(item.timestamp).toLocaleString('en-US', {
+                month: 'short',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+              })
+            : null;
 
-        // Calculate the total of dry and wet waste
-        const totalDryWaste = records.reduce((acc, record) => acc + record.dryWaste, 0);
-        const totalWetWaste = records.reduce((acc, record) => acc + record.wetWaste, 0);
-        const totalWaste = totalDryWaste + totalWetWaste;
+          return {
+            dryWaste: item.wasteType.trim() === "DRY" ? 1 : 0,  // Count as 1 if DRY
+            wetWaste: item.wasteType.trim() === "WET" ? 1 : 0,  // Count as 1 if WET
+            humidity: item.humidity || 0,
+            distance: item.distance || 0,
+            timestamp: formattedTime,  // Use formatted timestamp here
+          };
+        });
+
+        // Calculate the total counts for dry and wet waste
+        const totalDryWaste = records.filter(record => record.dryWaste > 0).length;
+        const totalWetWaste = records.filter(record => record.wetWaste > 0).length;
+        const totalWaste = records.length;  // Total records count
 
         // Update the state with calculated values
         setWasteData({
           totalWaste,
           dryWaste: totalDryWaste,
           wetWaste: totalWetWaste,
-          records,  // Store all individual records with timestamps
+          records,  // Store all individual records with formatted timestamps
         });
       }
     });
