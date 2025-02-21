@@ -39,8 +39,12 @@ import { WasteProvider } from "./WasteContext";
 import Footer from "./components/Footer";
 import AppRouter from "./AppRouter"; // Import the AppRouter component
 
+
+import { AuthProvider } from "../src/context/AuthContext";
+
 const App = () => {
   return (
+    <AuthProvider>
     <WasteProvider>
       <Router>
         <Navbar />
@@ -50,8 +54,14 @@ const App = () => {
       </Router>
       <Footer />
     </WasteProvider>
+    </AuthProvider>
   );
 };
 
 export default App;
+
+
+
+
+
 
